@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ShowsService } from '../shows.service';
 
 @Component({
     selector: 'app-shows-search',
@@ -6,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./shows-search.component.scss'],
 })
 export class ShowsSearchComponent implements OnInit {
-    constructor() {}
+    showForm = new FormControl('');
+
+    constructor(private showService: ShowsService) {}
 
     ngOnInit(): void {}
 
     searchShow() {
-        console.log('Searched Clicked!');
+        this.showService
+            .getShowsBySearchTerm(this.showForm.value)
+            .subscribe((data) => console.log(data));
+        this.showForm.reset();
     }
 }

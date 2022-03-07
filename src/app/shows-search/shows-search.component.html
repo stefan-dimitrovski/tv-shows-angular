@@ -5,10 +5,16 @@
       class="form-control form-control-lg"
       type="text"
       placeholder="Find show..."
+      [formControl]="showForm"
     />
   </div>
   <div class="col-auto">
-    <button id="search-btn" class="btn btn-primary mt-1" type="button" (click)="searchShow()">
+    <button
+      id="search-btn"
+      class="btn btn-primary mt-1"
+      type="button"
+      (click)="searchShow()"
+    >
       Search
     </button>
   </div>
