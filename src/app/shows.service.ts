@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Show } from './domain/show';
 import { ShowInfo } from './domain/show-info';
@@ -12,7 +12,9 @@ export class ShowsService {
     constructor(private http: HttpClient) {}
 
     getShowsBySearchTerm(searchTerm: string): Observable<Show[]> {
-        return this.http.get<Show[]>(`${environment.server}?q=${searchTerm}`);
+        return this.http
+            .get<Show[]>(`${environment.server}?q=${searchTerm}`)
+            .pipe(delay(450));
     }
 
     getShowInfo(id: number): Observable<ShowInfo> {

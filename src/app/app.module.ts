@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowsSearchComponent } from './shows-search/shows-search.component';
+import { GenrePipe } from './genre.pipe';
 
 @NgModule({
-    declarations: [AppComponent, ShowsSearchComponent],
+    declarations: [AppComponent, ShowsSearchComponent, GenrePipe],
     imports: [
         BrowserModule,
         HttpClientModule,

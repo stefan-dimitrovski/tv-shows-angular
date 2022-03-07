@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Show } from '../domain/show';
 import { ShowsService } from '../shows.service';
 
 @Component({
@@ -7,17 +8,23 @@ import { ShowsService } from '../shows.service';
     templateUrl: './shows-search.component.html',
     styleUrls: ['./shows-search.component.scss'],
 })
-export class ShowsSearchComponent implements OnInit {
+export class ShowsSearchComponent {
     showForm = new FormControl('');
+    shows: Show[] = [];
+    isLoading = false;
 
     constructor(private showService: ShowsService) {}
 
-    ngOnInit(): void {}
-
     searchShow() {
+        this.isLoading = !this.isLoading;
+        this.shows = [];
         this.showService
             .getShowsBySearchTerm(this.showForm.value)
-            .subscribe((data) => console.log(data));
+            .subscribe((data) => {
+                console.log(data);
+                this.isLoading = !this.isLoading;
+                this.shows = data;
+            });
         this.showForm.reset();
     }
 }
