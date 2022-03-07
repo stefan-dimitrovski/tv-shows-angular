@@ -1,3 +1,6 @@
+import { ShowCast } from './show-cast';
+import { ShowEpisode } from './show-episode';
+
 export interface ShowInfo {
     id: number;
     url: string;
@@ -6,7 +9,8 @@ export interface ShowInfo {
     genres: string[];
     status: string;
     premiered: string;
-    officalSite: string;
+    officialSite: string;
     image: { medium: string };
     summary: string;
+    _embedded: { episodes: ShowEpisode[]; cast: ShowCast[] };
 }

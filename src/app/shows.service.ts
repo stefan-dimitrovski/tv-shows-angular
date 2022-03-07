@@ -13,13 +13,13 @@ export class ShowsService {
 
     getShowsBySearchTerm(searchTerm: string): Observable<Show[]> {
         return this.http
-            .get<Show[]>(`${environment.server}?q=${searchTerm}`)
+            .get<Show[]>(`${environment.server}/search/shows?q=${searchTerm}`)
             .pipe(delay(450));
     }
 
     getShowInfo(id: number): Observable<ShowInfo> {
         return this.http.get<ShowInfo>(
-            `${environment.server}/${id}?embed[]=episodes&embed[]=cast`
+            `${environment.server}/shows/${id}?embed[]=episodes&embed[]=cast`
         );
     }
 }

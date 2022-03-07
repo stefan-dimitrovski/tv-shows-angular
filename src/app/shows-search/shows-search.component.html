@@ -19,8 +19,9 @@
     </button>
   </div>
 </form>
-<div id="loadings">
-  <div *ngIf="isLoading" class="lds-ring" id="loader">
+
+<div id="loading">
+  <div *ngIf="isLoading" class="lds-ring">
     <div></div>
     <div></div>
     <div></div>
@@ -30,7 +31,7 @@
 
 <div id="shows-list">
   <div *ngFor="let show of shows">
-    <a href="#" id="show-link">
+    <a routerLink="/details/{{ show.show.id }}" id="show-link">
       <div id="show" class="card">
         <div class="row center-elements">
           <div class="col-2">
