@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    switchMap,
+} from 'rxjs';
 import { Show } from '../domain/show';
 import { ShowsService } from '../shows.service';
 
@@ -16,19 +23,31 @@ export class ShowsSearchComponent implements OnInit {
     errorMsg = '';
     nothingFound = false;
 
-    constructor(private showService: ShowsService) {}
+    constructor(
+        private showService: ShowsService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
         this.showForm.valueChanges
             .pipe(
                 debounceTime(450),
-                filter((value) => value),
                 distinctUntilChanged(),
-                switchMap((searchTerm) => {
+                filter((value) => value)
+            )
+            .subscribe((data) => this.setShowSearch(data));
+
+        this.route.paramMap
+            .pipe(
+                filter((data) => data.has('term')),
+                map((data) => data.get('term')!),
+                switchMap((term) => {
                     this.isLoading = !this.isLoading;
                     this.nothingFound = false;
                     this.shows = [];
-                    return this.showService.getShowsBySearchTerm(searchTerm);
+                    this.showForm.setValue(term);
+                    return this.showService.getShowsBySearchTerm(term);
                 })
             )
             .subscribe({
@@ -48,6 +67,10 @@ export class ShowsSearchComponent implements OnInit {
                         'Unable to contact server, please try again later';
                 },
             });
+    }
+
+    setShowSearch(term: string) {
+        this.router.navigate([`/search/${term}`]);
     }
 
     searchShow() {

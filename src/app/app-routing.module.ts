@@ -5,6 +5,7 @@ import { ShowsSearchComponent } from './shows-search/shows-search.component';
 
 const routes: Routes = [
     { path: 'search', component: ShowsSearchComponent },
+    { path: 'search/:term', component: ShowsSearchComponent },
     { path: 'details/:id', component: ShowDetailsComponent },
     { path: '', redirectTo: 'search', pathMatch: 'full' },
     { path: '**', redirectTo: 'search' },
