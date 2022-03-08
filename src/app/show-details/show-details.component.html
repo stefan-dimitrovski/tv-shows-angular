@@ -4,12 +4,24 @@
   </h2>
   <div class="row" id="image-summary">
     <div class="col-6">
-      <img
-        id="show-image"
-        src="{{ show.image.medium }}"
-        width="200px"
-        height="300px"
-      />
+      <ng-component
+        *ngIf="show.image; then hasImage; else noImage"
+      ></ng-component>
+      <ng-template #hasImage>
+        <img
+          id="show-image"
+          src="{{ show.image.medium }}"
+          width="200px"
+          height="300px"
+        />
+      </ng-template>
+      <ng-template #noImage>
+        <img
+          src="../../assets/No-Image-Placeholder.svg"
+          width="200px"
+          height="300px"
+        />
+      </ng-template>
     </div>
     <div class="col-4" id="summary">
       <p [innerHtml]="[show.summary]"></p>
