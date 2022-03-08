@@ -14,7 +14,7 @@ export class ShowsService {
     getShowsBySearchTerm(searchTerm: string): Observable<Show[]> {
         return this.http
             .get<Show[]>(`${environment.server}/search/shows?q=${searchTerm}`)
-            .pipe(delay(450));
+            .pipe(delay(250));
     }
 
     getShowInfo(id: number): Observable<ShowInfo> {
