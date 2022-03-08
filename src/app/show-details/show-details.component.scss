@@ -1,3 +1,6 @@
+$border-radius: 10px;
+$border: 5px solid rgb(201, 201, 201);
+
 #show-link {
   text-decoration: none;
   color: royalblue;
@@ -6,6 +9,8 @@
   text-decoration: underline;
 }
 #show-image {
+  border-radius: $border-radius;
+  border: $border;
   position: relative;
   left: 25%;
 }
@@ -17,6 +22,10 @@
   justify-content: start;
   align-items: center;
   font-weight: bold;
+}
+.person-image {
+  border: $border;
+  border-radius: $border-radius;
 }
 
 @media screen and (max-width: 600px) {
