@@ -1,3 +1,7 @@
+p {
+  font-size: large;
+}
+
 #shows-list {
   display: flex;
   flex-direction: column;
@@ -24,6 +28,7 @@
   justify-content: center;
 }
 #show-name {
+  font-size: 2em;
   font-weight: bold;
   display: inline;
 }

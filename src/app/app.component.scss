@@ -1,13 +1,8 @@
 #title {
   font-size: xx-large;
   text-decoration: none;
-  color: royalblue;
+  color: white;
 }
-
-#title:hover {
-  text-decoration: underline;
-}
-
-h1 {
-  font-weight: bold;
+.example-spacer {
+  flex: 1 1 auto;
 }
