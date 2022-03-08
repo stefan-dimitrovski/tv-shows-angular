@@ -21,7 +21,6 @@ export class ShowsSearchComponent {
         this.showService
             .getShowsBySearchTerm(this.showForm.value)
             .subscribe((data) => {
-                console.log(data);
                 this.isLoading = !this.isLoading;
                 this.shows = data;
             });

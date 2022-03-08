@@ -38,7 +38,9 @@ export class ShowDetailsComponent implements OnInit {
                     this.show = show;
                     show._embedded.cast.map((person: any) => {
                         this.cast.push({
-                            image: person.person.image.medium,
+                            image: person.person.image
+                                ? person.person.image.medium
+                                : undefined,
                             name: person.person.name,
                         });
                     });

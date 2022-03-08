@@ -1,10 +1,17 @@
 <div *ngIf="show">
-  <h2>{{ show.name }}</h2>
-  <div class="row">
-    <div class="col-4">
-      <img src="{{ show.image.medium }}" width="200px" height="300px" />
-    </div>
+  <h2>
+    <a id="show-link" routerLink="/details/{{ show.id }}">{{ show.name }}</a>
+  </h2>
+  <div class="row" id="image-summary">
     <div class="col-6">
+      <img
+        id="show-image"
+        src="{{ show.image.medium }}"
+        width="200px"
+        height="300px"
+      />
+    </div>
+    <div class="col-4" id="summary">
       <p [innerHtml]="[show.summary]"></p>
       <p>
         Language: <span>{{ show.language }}</span>
@@ -29,28 +36,61 @@
     </div>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-3" id="cast-episodes">
     <div class="col-6">
       <h3>Cast</h3>
-      <div *ngFor="let person of cast" class="row">
-        <div class="col">
-          <img
-            src="{{ person.image }}"
-            height="200px"
-            width="150px"
-            class="m-3"
-          />
+      <ng-component
+        *ngIf="show._embedded.cast.length !== 0; then hasCast; else noCast"
+      ></ng-component>
+      <ng-template #hasCast>
+        <div *ngFor="let person of cast" class="row">
+          <div class="col">
+            <ng-component
+              *ngIf="person.image; then hasImage; else noImage"
+            ></ng-component>
+            <ng-template #hasImage>
+              <img
+                src="{{ person.image }}"
+                height="200px"
+                width="150px"
+                class="m-3"
+              />
+            </ng-template>
+            <ng-template #noImage>
+              <img
+                src="../../assets/No-Image-Placeholder.svg"
+                width="200px"
+                height="150px"
+                class="m-3"
+              />
+            </ng-template>
+          </div>
+          <div class="col person-name">
+            <p>{{ person.name }}</p>
+          </div>
         </div>
-        <div class="col">
-          <p>{{ person.name }}</p>
-        </div>
-      </div>
+      </ng-template>
+      <ng-template #noCast>
+        <p>No cast found!</p>
+      </ng-template>
     </div>
     <div class="col-6">
       <h3>Episodes</h3>
-      <div *ngFor="let episode of episodes">
-        <p>{{ episode }}</p>
-      </div>
+      <ng-component
+        *ngIf="
+          show._embedded.episodes.length !== 0;
+          then hasEpisodes;
+          else noEpisodes
+        "
+      ></ng-component>
+      <ng-template #hasEpisodes>
+        <div class="episode" *ngFor="let episode of episodes">
+          <p>{{ episode }}</p>
+        </div>
+      </ng-template>
+      <ng-template #noEpisodes>
+        <p>No episodes found!</p>
+      </ng-template>
     </div>
   </div>
 </div>

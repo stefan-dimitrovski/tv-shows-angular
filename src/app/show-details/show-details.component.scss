@@ -1,0 +1,40 @@
+#show-link {
+  text-decoration: none;
+  color: royalblue;
+}
+#show-link:hover {
+  text-decoration: underline;
+}
+#show-image {
+  position: relative;
+  left: 25%;
+}
+.episode {
+  font-weight: bold;
+}
+.person-name {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  #image-summary {
+    flex-direction: column;
+    align-items: center;
+  }
+  #show-image {
+    margin-bottom: 1em;
+  }
+  #show-image {
+    left: 0;
+  }
+  #cast-episodes {
+    flex-direction: column;
+    align-items: center;
+  }
+  #summary {
+    width: 100%;
+  }
+}
