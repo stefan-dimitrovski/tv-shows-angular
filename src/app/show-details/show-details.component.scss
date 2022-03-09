@@ -2,21 +2,21 @@ h4,
 h3 {
   font-weight: bold;
 }
+
 #show-link {
   text-decoration: none;
   color: royalblue;
 }
+
 #show-link:hover {
   text-decoration: underline;
 }
+
 #show-image {
   border-radius: 10px;
   border: 5px solid rgb(201, 201, 201);
   position: relative;
   left: 25%;
-}
-.episode {
-  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
@@ -26,8 +26,6 @@ h3 {
   }
   #show-image {
     margin-bottom: 1em;
-  }
-  #show-image {
     left: 0;
   }
   #cast-episodes {

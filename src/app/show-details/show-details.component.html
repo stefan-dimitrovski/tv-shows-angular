@@ -61,25 +61,9 @@
     <div class="col-6">
       <h3>Episodes</h3>
 
-      <ng-component
-        *ngIf="
-          show._embedded.episodes.length !== 0;
-          then hasEpisodes;
-          else noEpisodes
-        "
-      ></ng-component>
-      <ng-template #hasEpisodes>
-        <div class="episode" *ngFor="let episode of show._embedded.episodes">
-          <p>
-            S<span>{{ episode.season }}</span
-            >E<span>{{ episode.number }}</span
-            ><span> {{ episode.name }} </span>
-          </p>
-        </div>
-      </ng-template>
-      <ng-template #noEpisodes>
-        <p>No episodes found!</p>
-      </ng-template>
+      <app-show-episodes
+        [episodes]="show._embedded.episodes"
+      ></app-show-episodes>
     </div>
   </div>
 </div>

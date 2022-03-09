@@ -1,1 +1,17 @@
-<p>show-episodes works!</p>
+<ng-component
+  *ngIf="episodes.length !== 0; then hasEpisodes; else noEpisodes"
+></ng-component>
+
+<ng-template #hasEpisodes>
+  <div class="episode" *ngFor="let episode of episodes">
+    <p>
+      S<span>{{ episode.season }}</span
+      >E<span>{{ episode.number }}</span
+      ><span> {{ episode.name }} </span>
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #noEpisodes>
+  <p>No episodes found!</p>
+</ng-template>
