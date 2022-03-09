@@ -33,7 +33,7 @@ export class ShowsSearchComponent implements OnInit {
     ngOnInit(): void {
         this.showForm.valueChanges
             .pipe(
-                debounceTime(450),
+                debounceTime(500),
                 distinctUntilChanged(),
                 filter((value) => value)
             )

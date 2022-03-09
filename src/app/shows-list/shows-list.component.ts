@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Show } from '../domain/show';
 
 @Component({
@@ -7,10 +7,10 @@ import { Show } from '../domain/show';
     styleUrls: ['./shows-list.component.scss'],
 })
 export class ShowsListComponent implements OnInit {
-    shows: Show[] = [];
-    errorMsg = '';
-    nothingFound = false;
-    
+    @Input() shows: Show[] = [];
+    @Input() errorMsg = '';
+    @Input() nothingFound = false;
+
     constructor() {}
 
     ngOnInit(): void {}

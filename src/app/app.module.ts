@@ -14,7 +14,15 @@ import { ShowCastComponent } from './show-details/show-cast/show-cast.component'
 import { ShowEpisodesComponent } from './show-details/show-episodes/show-episodes.component';
 
 @NgModule({
-    declarations: [AppComponent, ShowsSearchComponent, GenrePipe, ShowDetailsComponent, ShowsListComponent, ShowCastComponent, ShowEpisodesComponent],
+    declarations: [
+        AppComponent,
+        ShowsSearchComponent,
+        GenrePipe,
+        ShowDetailsComponent,
+        ShowsListComponent,
+        ShowCastComponent,
+        ShowEpisodesComponent,
+    ],
     imports: [
         BrowserModule,
         HttpClientModule,
