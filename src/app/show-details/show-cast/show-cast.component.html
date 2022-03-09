@@ -1,0 +1,38 @@
+<ng-component
+  *ngIf="cast.length !== 0; then hasCast; else noCast"
+></ng-component>
+
+<ng-template #hasCast>
+  <div *ngFor="let castMember of cast" class="row">
+    <div class="col">
+      <ng-component
+        *ngIf="castMember.person.image.medium; then hasImage; else noImage"
+      ></ng-component>
+
+      <ng-template #hasImage>
+        <img
+          src="{{ castMember.person.image.medium }}"
+          height="200px"
+          width="150px"
+          class="m-3 person-image"
+        />
+      </ng-template>
+
+      <ng-template #noImage>
+        <img
+          src="../../assets/No-Image-Placeholder.svg"
+          width="200px"
+          height="150px"
+          class="m-3"
+        />
+      </ng-template>
+    </div>
+    <div class="col person-name">
+      <p>{{ castMember.person.name }}</p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noCast>
+  <p>No cast found!</p>
+</ng-template>

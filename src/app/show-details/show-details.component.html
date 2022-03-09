@@ -1,3 +1,7 @@
+<div *ngIf="isLoading" id="loader-container">
+  <div class="loader"></div>
+</div>
+
 <div *ngIf="show">
   <h4>
     <a id="show-link" routerLink="/details/{{ show.id }}">{{ show.name }}</a>
@@ -7,6 +11,7 @@
       <ng-component
         *ngIf="show.image; then hasImage; else noImage"
       ></ng-component>
+
       <ng-template #hasImage>
         <img
           id="show-image"
@@ -15,6 +20,7 @@
           height="300px"
         />
       </ng-template>
+
       <ng-template #noImage>
         <img
           src="../../assets/No-Image-Placeholder.svg"
@@ -23,6 +29,7 @@
         />
       </ng-template>
     </div>
+
     <div class="col-4" id="summary">
       <p [innerHtml]="[show.summary]"></p>
       <p>
@@ -51,58 +58,16 @@
   <div class="row mt-3" id="cast-episodes">
     <div class="col-6">
       <h3>Cast</h3>
-      <ng-component
-        *ngIf="show._embedded.cast.length !== 0; then hasCast; else noCast"
-      ></ng-component>
-      <ng-template #hasCast>
-        <div *ngFor="let person of cast" class="row">
-          <div class="col">
-            <ng-component
-              *ngIf="person.image; then hasImage; else noImage"
-            ></ng-component>
-            <ng-template #hasImage>
-              <img
-                src="{{ person.image }}"
-                height="200px"
-                width="150px"
-                class="m-3 person-image"
-              />
-            </ng-template>
-            <ng-template #noImage>
-              <img
-                src="../../assets/No-Image-Placeholder.svg"
-                width="200px"
-                height="150px"
-                class="m-3"
-              />
-            </ng-template>
-          </div>
-          <div class="col person-name">
-            <p>{{ person.name }}</p>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template #noCast>
-        <p>No cast found!</p>
-      </ng-template>
+
+      <app-show-cast [cast]="show._embedded.cast"></app-show-cast>
     </div>
+
     <div class="col-6">
       <h3>Episodes</h3>
-      <ng-component
-        *ngIf="
-          show._embedded.episodes.length !== 0;
-          then hasEpisodes;
-          else noEpisodes
-        "
-      ></ng-component>
-      <ng-template #hasEpisodes>
-        <div class="episode" *ngFor="let episode of episodes">
-          <p>{{ episode }}</p>
-        </div>
-      </ng-template>
-      <ng-template #noEpisodes>
-        <p>No episodes found!</p>
-      </ng-template>
+
+      <app-show-episodes
+        [episodes]="show._embedded.episodes"
+      ></app-show-episodes>
     </div>
   </div>
 </div>

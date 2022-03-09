@@ -1,35 +1,47 @@
-$border-radius: 10px;
-$border: 5px solid rgb(201, 201, 201);
-
 h4,
 h3 {
   font-weight: bold;
 }
+
 #show-link {
   text-decoration: none;
   color: royalblue;
 }
+
 #show-link:hover {
   text-decoration: underline;
 }
+
 #show-image {
-  border-radius: $border-radius;
-  border: $border;
+  border-radius: 10px;
+  border: 5px solid rgb(201, 201, 201);
   position: relative;
   left: 25%;
 }
-.episode {
-  font-weight: bold;
-}
-.person-name {
+
+#loader-container {
   display: flex;
-  justify-content: start;
+  justify-content: center;
+  height: 25em;
   align-items: center;
-  font-weight: bold;
 }
-.person-image {
-  border: $border;
-  border-radius: $border-radius;
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -39,8 +51,6 @@ h3 {
   }
   #show-image {
     margin-bottom: 1em;
-  }
-  #show-image {
     left: 0;
   }
   #cast-episodes {

@@ -18,8 +18,9 @@ import { ShowsService } from '../shows.service';
 })
 export class ShowsSearchComponent implements OnInit {
     showForm = new FormControl('');
-    shows: Show[] = [];
     isLoading = false;
+
+    shows: Show[] = [];
     errorMsg = '';
     nothingFound = false;
 
@@ -32,7 +33,7 @@ export class ShowsSearchComponent implements OnInit {
     ngOnInit(): void {
         this.showForm.valueChanges
             .pipe(
-                debounceTime(450),
+                debounceTime(500),
                 distinctUntilChanged(),
                 filter((value) => value)
             )

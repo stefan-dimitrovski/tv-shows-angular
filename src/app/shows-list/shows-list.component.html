@@ -1,0 +1,61 @@
+<ng-component *ngIf="nothingFound; then noShows; else hasShows"></ng-component>
+
+<ng-template #noShows>
+  <p class="mt-3">{{ errorMsg }}</p>
+</ng-template>
+
+<ng-template #hasShows
+  ><div id="shows-list">
+    <div *ngFor="let show of shows">
+      <a routerLink="/details/{{ show.show.id }}" id="show-link">
+        <div id="show" class="card">
+          <div class="row center-elements">
+            <div class="col-2">
+              <ng-component
+                *ngIf="show.show.image; then hasImage; else noImage"
+              ></ng-component>
+
+              <ng-template #hasImage>
+                <img
+                  id="show-image"
+                  src="{{ show.show.image.medium }}"
+                  width="100px"
+                  height="150px"
+                />
+              </ng-template>
+
+              <ng-template #noImage>
+                <img
+                  src="../../assets/No-Image-Placeholder.svg"
+                  width="100px"
+                  height="150px"
+                />
+              </ng-template>
+            </div>
+
+            <div class="col">
+              <div class="col">
+                <h4 id="show-name">{{ show.show.name }}</h4>
+                <p id="show-score">{{ show.score }}</p>
+              </div>
+
+              <ng-component
+                *ngIf="show.show.summary; then hasSummary; else noSummary"
+              ></ng-component>
+
+              <ng-template #hasSummary>
+                <p [innerHtml]="[show.show.summary]" id="summary"></p>
+              </ng-template>
+
+              <ng-template #noSummary>
+                <p>No Summary Available For this show!</p>
+              </ng-template>
+
+              <p id="show-genre">{{ show.show.genres | genre }}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-template>
