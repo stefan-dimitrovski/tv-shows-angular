@@ -11,6 +11,7 @@ import { ShowsService } from '../shows.service';
 })
 export class ShowDetailsComponent implements OnInit {
     show: ShowInfo | null = null;
+
     isLoading = true;
 
     constructor(

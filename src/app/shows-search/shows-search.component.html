@@ -22,14 +22,7 @@
   </div>
 </form>
 
-<div id="loading">
-  <div *ngIf="isLoading" class="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</div>
+<app-loader [isLoading]="isLoading"></app-loader>
 
 <app-shows-list
   [shows]="shows"

@@ -18,8 +18,8 @@ import { ShowsService } from '../shows.service';
 })
 export class ShowsSearchComponent implements OnInit {
     showForm = new FormControl('');
-    isLoading = false;
 
+    isLoading = false;
     shows: Show[] = [];
     errorMsg = '';
     nothingFound = false;

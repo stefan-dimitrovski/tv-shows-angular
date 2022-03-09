@@ -12,6 +12,7 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowsListComponent } from './shows-list/shows-list.component';
 import { ShowCastComponent } from './show-details/show-cast/show-cast.component';
 import { ShowEpisodesComponent } from './show-details/show-episodes/show-episodes.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { ShowEpisodesComponent } from './show-details/show-episodes/show-episode
         ShowsListComponent,
         ShowCastComponent,
         ShowEpisodesComponent,
+        LoaderComponent,
     ],
     imports: [
         BrowserModule,
