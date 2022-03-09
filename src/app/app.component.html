@@ -1,14 +1,23 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="pb-3 pt-3">
   <h1><a routerLink="/" id="title">TVMaze API Demo</a></h1>
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
+  <mat-icon
+    id="sun"
+    svgIcon="sun"
+    aria-hidden="false"
+    aria-label="Light Theme"
+  ></mat-icon>
+
+  <mat-slide-toggle [formControl]="toggleControl"></mat-slide-toggle>
   <mat-icon
     id="moon"
     svgIcon="moon"
     aria-hidden="false"
-    aria-label="Dark Mode"
+    aria-label="Dark Theme"
   ></mat-icon>
-  <mat-slide-toggle [formControl]="darkTheme"></mat-slide-toggle>
 </mat-toolbar>
-<div class="container mt-3">
-  <router-outlet></router-outlet>
+<div id="shows-container" class="mat-app-background">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

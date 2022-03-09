@@ -3,11 +3,20 @@
   text-decoration: none;
   color: white;
 }
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }
 #moon {
   position: relative;
+  left: 10px;
+  bottom: 5px;
+}
+#sun {
+  position: relative;
   right: 10px;
   bottom: 5px;
 }
+#shows-container {
+  // height: fit-content;
+}
+ 
