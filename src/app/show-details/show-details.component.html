@@ -55,14 +55,18 @@
         *ngIf="show._embedded.cast.length !== 0; then hasCast; else noCast"
       ></ng-component>
       <ng-template #hasCast>
-        <div *ngFor="let person of cast" class="row">
+        <div *ngFor="let castMember of show._embedded.cast" class="row">
           <div class="col">
             <ng-component
-              *ngIf="person.image; then hasImage; else noImage"
+              *ngIf="
+                castMember.person.image.medium;
+                then hasImage;
+                else noImage
+              "
             ></ng-component>
             <ng-template #hasImage>
               <img
-                src="{{ person.image }}"
+                src="{{ castMember.person.image.medium }}"
                 height="200px"
                 width="150px"
                 class="m-3 person-image"
@@ -78,7 +82,7 @@
             </ng-template>
           </div>
           <div class="col person-name">
-            <p>{{ person.name }}</p>
+            <p>{{ castMember.person.name }}</p>
           </div>
         </div>
       </ng-template>
@@ -96,8 +100,12 @@
         "
       ></ng-component>
       <ng-template #hasEpisodes>
-        <div class="episode" *ngFor="let episode of episodes">
-          <p>{{ episode }}</p>
+        <div class="episode" *ngFor="let episode of show._embedded.episodes">
+          <p>
+            S<span>{{ episode.season }}</span
+            >E<span>{{ episode.number }}</span
+            ><span> {{ episode.name }} </span>
+          </p>
         </div>
       </ng-template>
       <ng-template #noEpisodes>

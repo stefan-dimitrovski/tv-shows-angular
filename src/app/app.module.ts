@@ -9,9 +9,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowsSearchComponent } from './shows-search/shows-search.component';
 import { GenrePipe } from './genre.pipe';
 import { ShowDetailsComponent } from './show-details/show-details.component';
+import { ShowsListComponent } from './shows-list/shows-list.component';
+import { ShowCastComponent } from './show-details/show-cast/show-cast.component';
+import { ShowEpisodesComponent } from './show-details/show-episodes/show-episodes.component';
 
 @NgModule({
-    declarations: [AppComponent, ShowsSearchComponent, GenrePipe, ShowDetailsComponent],
+    declarations: [AppComponent, ShowsSearchComponent, GenrePipe, ShowDetailsComponent, ShowsListComponent, ShowCastComponent, ShowEpisodesComponent],
     imports: [
         BrowserModule,
         HttpClientModule,

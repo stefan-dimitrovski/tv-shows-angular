@@ -11,8 +11,6 @@ import { ShowsService } from '../shows.service';
 })
 export class ShowDetailsComponent implements OnInit {
     show: ShowInfo | null = null;
-    cast: { image: string; name: string }[] = [];
-    episodes: string[] = [];
 
     constructor(
         private path: ActivatedRoute,
@@ -34,23 +32,7 @@ export class ShowDetailsComponent implements OnInit {
                 )
             )
             .subscribe({
-                next: ({ id, show }) => {
-                    this.show = show;
-                    show._embedded.cast.map((person: any) => {
-                        this.cast.push({
-                            image: person.person.image
-                                ? person.person.image.medium
-                                : undefined,
-                            name: person.person.name,
-                        });
-                    });
-
-                    show._embedded.episodes.map((episode: any) => {
-                        this.episodes.push(
-                            `S${episode.season}E${episode.number} ${episode.name}`
-                        );
-                    });
-                },
+                next: ({ show, id }) => (this.show = show),
             });
     }
 }
