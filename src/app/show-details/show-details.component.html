@@ -1,3 +1,7 @@
+<div *ngIf="isLoading" id="loader-container">
+  <div class="loader"></div>
+</div>
+
 <div *ngIf="show">
   <h4>
     <a id="show-link" routerLink="/details/{{ show.id }}">{{ show.name }}</a>

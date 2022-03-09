@@ -11,6 +11,7 @@ import { ShowsService } from '../shows.service';
 })
 export class ShowDetailsComponent implements OnInit {
     show: ShowInfo | null = null;
+    isLoading = true;
 
     constructor(
         private path: ActivatedRoute,
@@ -32,7 +33,10 @@ export class ShowDetailsComponent implements OnInit {
                 )
             )
             .subscribe({
-                next: ({ show, id }) => (this.show = show),
+                next: ({ show, id }) => {
+                    this.isLoading = !this.isLoading;
+                    this.show = show;
+                },
             });
     }
 }

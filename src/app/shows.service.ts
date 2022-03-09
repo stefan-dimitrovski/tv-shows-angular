@@ -18,8 +18,10 @@ export class ShowsService {
     }
 
     getShowInfo(id: number): Observable<ShowInfo> {
-        return this.http.get<ShowInfo>(
-            `${environment.server}/shows/${id}?embed[]=episodes&embed[]=cast`
-        );
+        return this.http
+            .get<ShowInfo>(
+                `${environment.server}/shows/${id}?embed[]=episodes&embed[]=cast`
+            )
+            .pipe(delay(450));
     }
 }
