@@ -1,5 +1,13 @@
 <mat-toolbar color="primary">
   <h1><a routerLink="/" id="title">TVMaze API Demo</a></h1>
+  <span class="example-spacer"></span>
+  <mat-icon
+    id="moon"
+    svgIcon="moon"
+    aria-hidden="false"
+    aria-label="Dark Mode"
+  ></mat-icon>
+  <mat-slide-toggle [formControl]="darkTheme"></mat-slide-toggle>
 </mat-toolbar>
 <div class="container mt-3">
   <router-outlet></router-outlet>
